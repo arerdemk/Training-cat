@@ -1,0 +1,29 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df=pd.read_csv('logedeneme.csv')
+
+mol=np.multiply(df['gas'],22.4/1000)
+deltamol=np.subtract(6,mol)
+secondorder=np.divide(1,deltamol)
+
+df['mol']=mol
+df['delta mol']=deltamol
+df['1/A']=secondorder
+
+def moldecrase():
+    plt.scatter(df['min'],deltamol)
+    plt.show()
+
+def lnmoldecrease():
+    lnmol=np.log(deltamol)
+    plt.scatter(df['min'],lnmol)
+    plt.show()
+
+def secondorderr():
+    plt.scatter(df['min'],secondorder)
+    plt.show()
+
+
+
